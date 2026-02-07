@@ -43,14 +43,23 @@ body {
 }
 
 .footer {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    opacity: 0.9;
+    margin-top: 18px;
+    font-size: 0.9rem;
     color: #fff;
+    opacity: 0.95;
 }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+.heart {
+    color: #ff2d55;
+    display: inline-block;
+    animation: heartbeat 1.4s infinite;
 }
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+

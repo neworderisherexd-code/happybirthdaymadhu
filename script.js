@@ -73,7 +73,8 @@ muteBtn.onclick = () => {
 // footer
 const footer = document.createElement("div");
 footer.className = "footer";
-footer.innerText = "Made with 💖 just for you";
+footer.innerHTML = `Made with <span class="heart">❤</span> by <strong>LoyalPiyush</strong>`;
+
 
 // ---------- ASSEMBLY ----------
 
