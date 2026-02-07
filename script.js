@@ -1,4 +1,7 @@
 const app = document.getElementById("app");
+const song = document.getElementById("birthdaySong");
+
+// ---------- UI BUILD ----------
 
 // container
 const container = document.createElement("div");
@@ -34,19 +37,37 @@ const message = document.createElement("p");
 message.className = "message mt-3";
 message.innerHTML = `
 <strong>Happy Birthday to you, my greatest hero in Valorant 🎮✨</strong><br><br>
-You’re someone who never stops grinding, always pushing forward, and somehow still manages to ace every challenge.<br><br>
-Whenever I feel low or lost, you’re the person I look up to. Your dedication, positivity, and strength inspire me to be better every day.<br><br>
+You’re someone who never stops grinding, always pushing forward, and always finding a way to ace every challenge.<br><br>
+Whenever I feel low or lost, you’re the person I look up to. Your dedication, positivity, and strength inspire me every single day.<br><br>
 You truly are the best 💖
 `;
 
-// button
-const button = document.createElement("button");
-button.className = "btn btn-danger rounded-pill px-4 mt-3";
-button.innerText = "🎵 Play Taylor Mode";
-button.onclick = () => {
-    const song = document.getElementById("birthdaySong");
-    song.volume = 0.8;
-    song.play();
+// ---------- MUSIC CONTROLS ----------
+
+// play / pause button
+const playBtn = document.createElement("button");
+playBtn.className = "btn btn-danger rounded-pill px-4 me-2 mt-3";
+playBtn.innerText = "▶️ Play Taylor Mode";
+
+playBtn.onclick = () => {
+    if (song.paused) {
+        song.volume = 0.8;
+        song.play();
+        playBtn.innerText = "⏸ Pause Taylor Mode";
+    } else {
+        song.pause();
+        playBtn.innerText = "▶️ Play Taylor Mode";
+    }
+};
+
+// mute / unmute button
+const muteBtn = document.createElement("button");
+muteBtn.className = "btn btn-outline-light rounded-pill px-4 mt-3";
+muteBtn.innerText = "🔇 Mute";
+
+muteBtn.onclick = () => {
+    song.muted = !song.muted;
+    muteBtn.innerText = song.muted ? "🔊 Unmute" : "🔇 Mute";
 };
 
 // footer
@@ -54,16 +75,16 @@ const footer = document.createElement("div");
 footer.className = "footer";
 footer.innerText = "Made with 💖 just for you";
 
-// assemble card
+// ---------- ASSEMBLY ----------
+
 card.appendChild(gallery);
 card.appendChild(message);
-card.appendChild(button);
+card.appendChild(playBtn);
+card.appendChild(muteBtn);
 
-// assemble container
 container.appendChild(badge);
 container.appendChild(heading);
 container.appendChild(card);
 container.appendChild(footer);
 
-// inject into DOM
 app.appendChild(container);
